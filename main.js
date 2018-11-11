@@ -9,19 +9,17 @@
   var ybutton = document.getElementById("y-answer");
   var nbutton = document.getElementById("n-answer");
 
-  function displayPopUp(btntype) {
-    //alert(btntype);
+  function displayPopUp(btnname) {
 
-    if (btntype=="submitbtn"){
+    if (btnname=="submitbtn"){
       contenttext.innerHTML = "You are about to submit your application. Do you want to proceed?";
       ybutton.innerHTML = "Proceed";
       nbutton.innerHTML = "Cancel";
 
-      ybutton.setAttribute("type","submit");
       ybutton.setAttribute("onclick","confirmFunc()");
       nbutton.setAttribute("onclick","closeFunction()");
       popupbox.style.display = "block";
-    } else if (btntype=="resetbtn") {
+    } else if (btnname=="resetbtn") {
       contenttext.innerHTML = "Do you really want to clear your application?";
       ybutton.innerHTML = "Clear";
       nbutton.innerHTML = "No";
@@ -31,6 +29,7 @@
       popupbox.style.display = "block";
     }
   }
+
 
 
   // When the user clicks on <span> (x), close the PopUp
@@ -44,19 +43,9 @@
   }
 
   function confirmFunc(){
-    return true;
-    //document.getElementById("regForm").setAttribute("action","bouncer.php");
+    document.getElementById("regForm").submit();
   }
 
 /*****************************************************************************/
 // Validation function
 /*****************************************************************************/
-function validate(myForm){
-  var reg = /^[A-Z]\d[A-Z]\d[A-Z]\d$/;
-  if (!reg.test(myForm.postal.value)){
-    alert("invalid Postal Code");
-    return false;
-  } else{
-    return true;
-  }
-}
